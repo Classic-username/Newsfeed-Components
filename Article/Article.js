@@ -85,8 +85,66 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Your mom your mom',
+    date: 'When you were born',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
+
+class Article {
+  constructor (article){
+      this.article = article;
+      this.articleDiv = document.querySelector('.articles');
+      this.div = document.createElement('div');
+      this.div.classList.add('article');
+      this.articleDiv.appendChild(this.div);
+      this.h2 = document.createElement('h2');
+      this.h2.textContent = this.article.title;
+      this.div.appendChild(this.h2);
+      this.pDate = document.createElement('p');
+      this.pDate.classList.add('date');
+      this.pDate.textContent = this.article.date;
+      this.div.appendChild(this.pDate);
+      this.p1 = document.createElement('p');
+      this.p1.textContent = this.article.firstParagraph;
+      this.div.appendChild(this.p1);
+      this.p2 = document.createElement('p');
+      this.p2.textContent = this.article.secondParagraph;
+      this.div.appendChild(this.p2);
+      this.p3 = document.createElement('p');
+      this.p3.textContent = this.article.thirdParagraph;
+      this.div.appendChild(this.p3);
+      this.span = document.createElement('span');
+      this.span.textContent = 'Open/Close'
+      this.span.classList.add('expandButton');
+      this.div.appendChild(this.span);
+
+      this.span.addEventListener('click', () => {
+        this.div.classList.toggle('article-open')
+      })
+
+
+
+  }
+}
+
+data.map((CV) => {
+    return new Article(CV);
+})
+
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
